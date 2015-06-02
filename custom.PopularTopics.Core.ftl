@@ -1,3 +1,12 @@
+<#assign kPopularTopics = {
+    'kudos_weight'       : 'msgmetadata.kudos_weight',
+    'replies_weight'     : 'msgmetadata.replies_weight',
+    'views_weight'       : 'msgmetadata.views_weight',
+    'solutions_weight'   : 'msgmetadata.solutions_weight',
+    'attachments_weight' : 'msgmetadata.attachments_weight',
+    'promoted_id'        : 'msgmetadata.promoted_threadid'
+} />
+
 <#function sum nums...>
     <#local tot = 0 />
     <#list nums as num>
@@ -24,11 +33,11 @@
     <#local response = rest( '2.0', '/search?q=' + query?url ) />
     <#local topics = [] />
 
-    <#local score_kudos       = settings.name.get( 'msgmetadata.kudos_weight' )?number!20 />
-    <#local score_replies     = settings.name.get( 'msgmetadata.replies_weight' )?number!8 />
-    <#local score_views       = settings.name.get( 'msgmetadata.views_weight' )?number!5 />
-    <#local score_solved      = settings.name.get( 'msgmetadata.solutions_weight' )?number!4 />
-    <#local score_attachments = settings.name.get( 'msgmetadata.attachments_weight' )?number!2 />
+    <#local score_kudos       = settings.name.get( kPopularTopics.kudos_weight )?number!20 />
+    <#local score_replies     = settings.name.get( kPopularTopics.replies_weight )?number!8 />
+    <#local score_views       = settings.name.get( kPopularTopics.views_weight )?number!5 />
+    <#local score_solved      = settings.name.get( kPopularTopics.solutions_weight )?number!4 />
+    <#local score_attachments = settings.name.get( kPopularTopics.attachments_weight )?number!2 />
 
     <#list response.data.items as message>
         <#local kudos       = message.kudos.sum.weight * score_kudos />
