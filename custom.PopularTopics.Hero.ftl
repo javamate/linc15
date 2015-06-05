@@ -1,6 +1,6 @@
 <#include 'custom.PopularTopics.Core.ftl'>
 <#if ( coreNode.ancestors?size == 0 )>
-    <#assign promoted_topic_id = settings.name.get( 'msgmetadata.promoted_threadid' ) />
+    <#assign promoted_topic_id = settings.name.get( kPopularTopics.promoted_id ) />
     <#if ( promoted_topic_id != '' )>
         <#assign popular_topic = popular_topics( promoted_topic_id )?first />
     <#else>
