@@ -1,5 +1,5 @@
 <#include 'custom.PopularTopics.Core.ftl'/>
-<#assign popular_topics = popular_topics()[1..3] />
+<#assign popular_topics = popular_topics()[0..2] />
 
 <style type="text/css">
 .popular-topics-list-message-author {
